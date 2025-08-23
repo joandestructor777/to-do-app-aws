@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>FocusTask - Gestor de Tareas y Pomodoro</title>
+    <script src="{{url_for('static', filename= 'js/script.js')}}" defer></script>
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <h1>Focus</h1>
+        </header>
+
+        <div class="contenido-principal">
+            <section class="seccion">
+                <h2>Lista de Tareas</h2>
+                <div class="formulario-tarea">
+                    <input type="text" class="entrada-tarea" placeholder="Escribe una nueva tarea...">
+                    <button class="boton-agregar">Agregar</button>
+                </div>
+                <ul class="lista-tareas" id="listaTareas">
+                    <!-- Las tareas se agregarán aquí dinámicamente -->
+                </ul>
+            </section>
+
+            <section class="seccion">
+                <h2>Temporizador Pomodoro</h2>
+                <div class="temporizador">
+                    <div class="tiempo" id="tiempo">25:00</div>
+                    <div class="controles">
+                        <button class="boton-control boton-iniciar" id="iniciar">▶️ Iniciar</button>
+                        <button class="boton-control" id="pausar">⏸ Pausar</button>
+                        <button class="boton-control" id="reiniciar">🔄 Reiniciar</button>
+                    </div>
+                    <div class="modos">
+                        <button class="boton-modo activo" data-modo="trabajo">Trabajo</button>
+                        <button class="boton-modo" data-modo="descanso-corto">Descanso Corto</button>
+                        <button class="boton-modo" data-modo="descanso-largo">Descanso Largo</button>
+                    </div>
+                    <div class="contador-pomodoros">
+                        Pomodoros hoy: <span id="contador">0</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="notificacion" id="notificacion">¡Tiempo completado!</div>
+</body>
+</html>

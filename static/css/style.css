@@ -1,0 +1,277 @@
+:root {
+    --color-primario: #6d9dc5;
+    --color-secundario: #7ec4cf;
+    --color-fondo: #f8f9fa;
+    --color-texto: #333;
+    --color-completado: #a1c181;
+    --color-boton: #dce1de;
+    --color-boton-hover: #c5cac7;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}
+
+.descripcion {
+    color: var(--color-secundario);
+    font-size: 1.1rem;
+}
+
+.contenido-principal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.seccion {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--sombra);
+}
+
+h2 {
+    color: var(--color-primario);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-secundario);
+}
+
+/* Estilos para la lista de tareas */
+.formulario-tarea {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.entrada-tarea {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--color-secundario);
+    border-radius: 6px 0 0 6px;
+    font-size: 1rem;
+}
+
+.boton-agregar {
+    padding: 12px 20px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.boton-agregar:hover {
+    background-color: var(--color-secundario);
+}
+
+.lista-tareas {
+    list-style: none;
+}
+
+.tarea {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: var(--color-boton);
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.tarea:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra);
+}
+
+.texto-tarea {
+    flex: 1;
+    margin: 0 15px;
+    word-break: break-word;
+}
+
+.tarea-completada .texto-tarea {
+    text-decoration: line-through;
+    color: var(--color-completado);
+}
+
+.boton-accion {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.boton-completar {
+    color: var(--color-completado);
+}
+
+.boton-completar:hover {
+    background-color: rgba(161, 193, 129, 0.2);
+}
+
+.boton-eliminar {
+    color: #e56b6f;
+}
+
+.boton-eliminar:hover {
+    background-color: rgba(229, 107, 111, 0.2);
+}
+
+/* Estilos para el pomodoro */
+.temporizador {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tiempo {
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--color-primario);
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.boton-control {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: var(--color-boton);
+}
+
+.boton-control:hover {
+    background-color: var(--color-boton-hover);
+    transform: translateY(-2px);
+}
+
+.boton-iniciar {
+    background-color: var(--color-completado);
+    color: white;
+}
+
+.boton-iniciar:hover {
+    background-color: #8aac67;
+}
+
+.modos {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.boton-modo {
+    padding: 10px 20px;
+    border: 2px solid var(--color-secundario);
+    border-radius: 6px;
+    background: white;
+    color: var(--color-texto);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.boton-modo.activo {
+    background-color: var(--color-secundario);
+    color: white;
+}
+
+.contador-pomodoros {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: var(--color-primario);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenido-principal {
+        flex-direction: column;
+    }
+    
+    .tiempo {
+        font-size: 3.5rem;
+    }
+    
+    .controles {
+        flex-wrap: wrap;
+    }
+}
+
+/* Animaciones */
+@keyframes completarTarea {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.tarea-completada {
+    animation: completarTarea 0.5s ease;
+    background-color: rgba(161, 193, 129, 0.2);
+}
+
+.notificacion {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primario);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 6px;
+    box-shadow: var(--sombra);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+.notificacion.mostrar {
+    opacity: 1;
+}
