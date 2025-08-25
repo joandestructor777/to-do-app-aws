@@ -79,3 +79,70 @@ pip3 install flask
 
 # Instalar Nginx
 sudo apt install nginx -y
+
+5.4 Clonar el Repositorio con la Aplicación
+git clone https://github.com/<usuario>/mi-proyecto-aws.git
+cd mi-proyecto-aws/src
+
+5.5 Configuración de Flask
+
+Asegúrate de que tu app.py tenga lo siguiente en la parte final:
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+
+    Ejecutar la aplicación:
+
+python3 app.py
+
+
+Verificar que funciona abriendo en navegador:
+
+http://<IP_PÚBLICA>:5000
+
+5.6 Configuración de Nginx como Proxy Reverso
+
+Editar la configuración de Nginx:
+
+sudo nano /etc/nginx/sites-available/default
+
+
+Reemplazar el bloque location / { ... } por:
+
+location / {
+    proxy_pass http://127.0.0.1:5000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+
+
+Probar y reiniciar Nginx:
+
+sudo nginx -t
+sudo systemctl restart nginx
+
+
+Ahora la aplicación Flask estará disponible en:
+
+http://<IP_PÚBLICA>
+
+📷 6. Capturas de Pantalla
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+
+🐞 7. Problemas Encontrados y Soluciones
+⚠️ Problema: Página de Nginx en lugar de mi aplicación Flask
+
+Cuando abría http://<IP_PÚBLICA>, aparecía la página por defecto de Nginx en vez de mi aplicación Flask.
+
+Causa: Nginx estaba sirviendo su propia página inicial en /var/www/html/index.nginx-debian.html.
+
+✅ Solución:
+
+Configuré Nginx como proxy reverso para redirigir al puerto 5000 donde corre Flask.
+
+Reinicié Nginx y la aplicación Flask se mostró correctamente.
