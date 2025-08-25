@@ -137,7 +137,7 @@ http://<IP_PÚBLICA>
 🐞 7. Problemas Encontrados y Soluciones
 ⚠️ Problema: Página de Nginx en lugar de mi aplicación Flask
 
-Cuando abría http://<IP_PÚBLICA>, aparecía la página por defecto de Nginx en vez de mi aplicación Flask.
+Cuando abría http://3.16.108.173/, aparecía la página por defecto de Nginx en vez de mi aplicación Flask.
 
 Causa: Nginx estaba sirviendo su propia página inicial en /var/www/html/index.nginx-debian.html.
 
@@ -146,3 +146,24 @@ Causa: Nginx estaba sirviendo su propia página inicial en /var/www/html/index.n
 Configuré Nginx como proxy reverso para redirigir al puerto 5000 donde corre Flask.
 
 Reinicié Nginx y la aplicación Flask se mostró correctamente.
+
+8. Consejos 
+
+Usar host="0.0.0.0" en Flask para exponer la aplicación.
+
+Siempre probar los puertos en Security Groups antes de depurar errores.
+
+Nginx facilita exponer la aplicación en el puerto 80, en lugar de usar directamente el 5000.
+
+Documentar errores encontrados para futuras implementaciones.
+
+👨‍🏫 9. Reflexión y Aprendizajes
+
+Aprendí a desplegar una aplicación Flask en AWS EC2 usando EC2 Instance Connect.
+
+Comprendí cómo funciona Nginx como proxy reverso.
+
+Verifiqué la importancia de abrir correctamente los puertos de Security Group.
+
+Este proceso me ayudó a mejorar mis habilidades en despliegue en la nube.
+                                                            
