@@ -68,6 +68,7 @@ Clic en Connect = EC2 Instance Connect
 Esto nos abre una terminal en el navegador.
 
 5.3 Instalar Dependencias en la Instancia
+```
 # Actualizar paquetes
 sudo apt update && sudo apt upgrade -y
 
@@ -79,7 +80,7 @@ pip3 install flask
 
 # Instalar Nginx
 sudo apt install nginx -y
-
+```
 5.4 Clonar el Repositorio con la Aplicación
 git clone https://github.com/<usuario>/mi-proyecto-aws.git
 cd mi-proyecto-aws/src
