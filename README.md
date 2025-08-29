@@ -101,17 +101,18 @@ python3 app.py
 
 Verificar que funciona abriendo en navegador:
 
-http://<IP_PÚBLICA>:5000
+
+`http://<IP_PÚBLICA>:5000`
 
 5.6 Configuración de Nginx como Proxy Reverso
 
 Editar la configuración de Nginx:
 
-sudo nano /etc/nginx/sites-available/default
+`sudo nano /etc/nginx/sites-available/default`
 
 
 Reemplazar el bloque location / { ... } por:
-
+```
 location / {
     proxy_pass http://127.0.0.1:5000;
     proxy_set_header Host $host;
@@ -119,17 +120,17 @@ location / {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
 }
-
+```
 
 Probar y reiniciar Nginx:
-
+```
 sudo nginx -t
 sudo systemctl restart nginx
-
+```
 
 Ahora la aplicación Flask estará disponible en:
 
-http://<IP_PÚBLICA>
+`http://<IP_PÚBLICA>`
 
 📷 6. Capturas de Pantalla
 ![alt text](image-2.png)
@@ -140,7 +141,11 @@ http://<IP_PÚBLICA>
 🐞 7. Problemas Encontrados y Soluciones
 ⚠️ Problema: Página de Nginx en lugar de mi aplicación Flask
 
-Cuando abría http://3.16.108.173/, aparecía la página por defecto de Nginx en vez de mi aplicación Flask.
+Cuando abría 
+
+`http://3.16.108.173/` 
+
+aparecía la página por defecto de Nginx en vez de mi aplicación Flask.
 
 Causa: Nginx estaba sirviendo su propia página inicial en /var/www/html/index.nginx-debian.html.
 
