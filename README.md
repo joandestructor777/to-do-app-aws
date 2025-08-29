@@ -1,73 +1,94 @@
+Documentación de la Aplicación: To-Do List con Pomodoro
 📌 1. Descripción General de la Aplicación
 
-Esta es una aplicación desarrollada en Flask (Python) con frontend en HTML, CSS y JavaScript.
-El propósito de la aplicación es:
-👉 Manejar una implementacion entre dos funcionalidades que esten relacionadas, en nuestro caso, creamos una lista en programación conocida como "to-do list" y es para realizar un crud con tareas o pendientes en nuestro dia a dia, ademas, por su lado, tenemos un pomodoro, el cual es un medio para ejercer una tarea con orden, estableciendo la intensidad y el descanso de una manera equitativa.
-![imagen de la aplicacion](image.png)
-La aplicación está desplegada en AWS EC2 (Ubuntu, Free Tier) y es accesible públicamente mediante el navegador.
+La aplicación es un sistema de gestión de tareas (To-Do List) junto con la funcionalidad Pomodoro para mejorar la productividad.
 
-⚙️ 2. Tecnologías Utilizadas
+Objetivo de la Aplicación:
 
-AWS EC2 (Ubuntu 22.04 LTS, Free Tier)
+To-Do List: Permite agregar, editar, eliminar y marcar tareas como completadas. Ideal para organizar pendientes diarios.
 
-EC2 Instance Connect 
+Pomodoro: Implementa la técnica Pomodoro para dividir el tiempo de trabajo en intervalos (normalmente 25 minutos de trabajo y 5 minutos de descanso). Esto mejora la concentración y optimiza el uso del tiempo.
 
-Flask (Python 3.x)
+Tecnologías Utilizadas:
 
-HTML, CSS, JavaScript
+Backend: Flask (Python 3.x)
 
-Nginx (como proxy reverso para exponer la app Flask)
+Frontend: HTML, CSS y JavaScript
 
+Despliegue: AWS EC2 (Ubuntu 22.04 LTS)
 
-🌍 3. URL de la Aplicación
+Proxy Reverso: Nginx (para exponer la aplicación Flask)
 
-La aplicación está disponible en:
+La aplicación está desplegada en AWS EC2, en una instancia gratuita (Free Tier), y es accesible públicamente desde el navegador.
+
+URL de la Aplicación:
+
+La aplicación está disponible en la siguiente URL:
 
 http://3.16.108.173/
 
-📋 4. Requisitos Previos
+⚙️ 2. Tecnologías Utilizadas
 
-Para replicar este despliegue se necesita:
+La aplicación fue construida utilizando las siguientes tecnologías:
 
-Cuenta en AWS Free Tier
+AWS EC2: Instancia Ubuntu Server 22.04 LTS.
 
-Una instancia EC2 Ubuntu Server 22.04 corriendo en AWS
+Flask: Framework de Python para crear aplicaciones web.
 
-Configuración de Security Groups con los siguientes puertos abiertos:
+HTML/CSS/JavaScript: Para la interfaz de usuario.
 
-22 → (SSH/EC2 Instance Connect)
+Nginx: Utilizado como proxy reverso para exponer Flask al público.
 
-80 → (HTTP, acceso público con Nginx)
+EC2 Instance Connect: Para la conexión remota con la instancia EC2.
 
-5000 → (Puerto interno para Flask, si se ejecuta directamente sin Nginx)
+📋 3. Requisitos Previos
+
+Para replicar este despliegue, necesitarás tener lo siguiente:
+
+Cuenta en AWS Free Tier: Necesaria para crear instancias EC2 en el plan gratuito.
+
+Instancia EC2 Ubuntu Server 22.04 LTS: Se utiliza para alojar la aplicación.
+
+Grupos de Seguridad en AWS: Los puertos deben estar configurados correctamente para el acceso.
+
+Puertos a Abrir en Security Groups:
+
+22: Para acceso SSH a la instancia (EC2 Instance Connect).
+
+80: Para acceso HTTP público a la aplicación mediante Nginx.
+
+5000: Puerto interno para Flask (si se ejecuta directamente sin Nginx).
 
 5. Paso a Paso del Despliegue
 5.1 Crear Instancia EC2
 
-Ingresar a AWS → EC2 → Launch Instance
+Ingresar a AWS Console y seleccionar EC2.
 
-Configuración:
+Clic en Launch Instance para crear una nueva instancia.
 
-AMI: Ubuntu Server 22.04 LTS (Free Tier)
+Configuración recomendada:
 
-Tipo de instancia: t3.micro (Free Tier)
+AMI: Ubuntu Server 22.04 LTS (Free Tier).
 
-Almacenamiento: 8 GB
+Tipo de Instancia: t3.micro (también en Free Tier).
 
-Security Group: abrir puertos 22, 80 y 5000.
-![imagen de los puertos, en grupos de seguridad](image-1.png)
+Almacenamiento: 8 GB (por defecto, puedes ajustar si lo deseas).
 
-Lanzar instancia.
+Security Group: Configura los puertos a abrir: 22, 80, y 5000.
+
+Haz clic en Launch para crear la instancia.
 
 5.2 Conexión con EC2 Instance Connect
 
-Seleccionar la instancia en AWS EC2
+Selecciona la instancia recién creada en la consola de AWS EC2.
 
-Clic en Connect = EC2 Instance Connect
+Clic en el botón Connect.
 
-Esto nos abre una terminal en el navegador.
+Selecciona la opción EC2 Instance Connect para abrir una terminal directamente desde el navegador.
 
 5.3 Instalar Dependencias en la Instancia
+
+Para que la aplicación funcione correctamente, debes instalar varias dependencias en la instancia EC2. A continuación, se detallan los pasos para instalar las dependencias necesarias:
 ```
 # Actualizar paquetes
 sudo apt update && sudo apt upgrade -y
