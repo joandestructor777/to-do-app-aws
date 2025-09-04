@@ -206,4 +206,10 @@ def test_home_page():
     response = client.get('/')
     assert response.status_code == 200
     assert b"Welcome" in response.data  # Ajusta según tu HTML
+```
 
+📛 10.2 Errores
+
+Al implementar la informacion compartida por el docente, e implementar la ejecucion del test compartido, vemos que tenemos algunos errores, y el nuestro, en esta ocasión, fue la ruta de la apliacion principal "app.py", recibiendo un error: 
+
+![Imagen de nuestro error](./errorimg.png)
