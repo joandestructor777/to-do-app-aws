@@ -184,9 +184,6 @@ Para mejorar el flujo de desarrollo y validar la aplicación automáticamente en
 - Ejecución de tests con **pytest** en la carpeta `tests/`
 - Verificación automática en cada push a la rama `main`
 
-📌 Estado del Workflow:
-
-![CI](https://github.com/tu-usuario/mi-proyecto-aws/actions/workflows/ci.yml/badge.svg)
 
 ---
 
