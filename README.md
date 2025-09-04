@@ -174,4 +174,42 @@ Comprendí cómo funciona Nginx como proxy reverso.
 Verifiqué la importancia de abrir correctamente los puertos de Security Group.
 
 Este proceso me ayudó a mejorar mis habilidades en despliegue en la nube.
-                                                            
+                                                
+⚙️ 10. Automatización con GitHub Actions
+
+Para mejorar el flujo de desarrollo y validar la aplicación automáticamente en cada push al repositorio, se configuró un workflow básico con **GitHub Actions**.
+
+✅ Este workflow realiza:
+- Instalación de dependencias desde `requirements.txt`
+- Ejecución de tests con **pytest** en la carpeta `tests/`
+- Verificación automática en cada push a la rama `main`
+
+📌 Estado del Workflow:
+
+![CI](https://github.com/tu-usuario/mi-proyecto-aws/actions/workflows/ci.yml/badge.svg)
+
+---
+
+🧪 10.1 Test Implementados
+
+Se agregó un archivo `tests/test_basic.py` con validaciones mínimas:
+
+```python
+import pytest
+from app import app
+
+def test_basic_math():
+    assert 1 + 1 == 2
+
+def test_home_page():
+    client = app.test_client()
+    response = client.get('/')
+    assert response.status_code == 200
+    assert b"Welcome" in response.data  # Ajusta según tu HTML
+```
+
+📛 10.2 Errores
+
+Al implementar la informacion compartida por el docente, e implementar la ejecucion del test compartido, vemos que tenemos algunos errores, y el nuestro, en esta ocasión, fue la ruta de la apliacion principal "app.py", recibiendo un error: 
+
+![Imagen de nuestro error](./errorimg.png)
