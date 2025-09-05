@@ -228,9 +228,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app import app
 ```
 
-📛 10.3 Error en la estructura del test
+📛 10.3 Error en la estructura del test♠
 
-Al haber arreglado nuestro error, podemos ver que al ejecutar nuestro pytest, vemos otro error 
+Al haber arreglado nuestro error, podemos ver que al ejecutar nuestro pytest, vemos otro error ♠
 
 ![Imagen de nuestro error de welcome](./error%20del%20welcome.png)
 
@@ -241,9 +241,38 @@ Aqui, vemos que al implementar el codigo compartido por el profesor, tenemos un 
 
 ![Imagen de nuestro error de welcome](./error%20del%20welcome.png)
 
-Esto es debido a que nuestro test buscará la palabra que este en comillas, en la información compartida, tenemos "Welcome" por lo tanto, nuestro test buscará en nuestro jinja la palabra Welcome, si no la encuentra, nos botará un error o F, asi que la solución es cambiar el Welcome por alguna palabra o algo que tenga nuestro Jinja, por ejemplo: 
+Esto es debido a que nuestro test buscará la palabra que este en comillas, en la información compartida, tenemos "Welcome" por lo tanto, nuestro test buscará en nuestro jinja la palabr○a Welcome, si no la encuentra, nos botará un error o F, asi que la solución es cambiar el Welcome por alguna palabra o algo que tenga nuestro Jinja, por ejemplo: 
 
 ![Imagen de nuestro error de welcome](./solucion%20segundo%20error.png)
 
 Aqui cambiamos la palabra b"Welcome", por "Temporizador Pomodoro" ya que nuestra aplicación si cuenta en uno o más lugares con tales palabras. 
+
+💢11.0 GitHub Actions - Solución y Error
+
+Al ejectutar nuestro git push, si vamos a GitHub, y vamos al apartado de actions, que esta dentro de nuestro repo, podemos ver que tenemos varios fail, en nuestro caso, tenemos esto: 
+
+![Imagen de nuestro actions (posiblemente errores)](./errorActions.png)
+
+Esto es debido a que intencionalmente se dejo una version o sintaxis en el ci.yml, que es errónea, si vamos a nuestro ci.yml, veremos que en una parte dice:
+
+```
+        with:
+          python-version: 3.10
+```
+
+Lo que está mal es que la versión de nuestro Python, debe ser entre comillas "", asi:
+
+```
+        with:
+          python-version: "3.10"
+```
+
+si guardamos cambios y ejecutamos:
+    - git add .
+    - git commit -m 'actualizacion de ci.yml'
+    - git push
+
+Con esto, nuestro actions correra alfin de manera exitosa por completo, saliendo un check al final: 
+
+![Imagen de nuestro actions exitoso)](./exitoso.png)
 
