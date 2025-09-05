@@ -202,11 +202,36 @@ def test_home_page():
     client = app.test_client()
     response = client.get('/')
     assert response.status_code == 200
-    assert b"Welcome" in response.data  # Ajusta según tu HTML
+    assert b"Welcome" in response.data  # Ajusta según tu HTML`
 ```
 
-📛 10.2 Errores
+📛 10.2 Error hallando el App.py
 
 Al implementar la informacion compartida por el docente, e implementar la ejecucion del test compartido, vemos que tenemos algunos errores, y el nuestro, en esta ocasión, fue la ruta de la apliacion principal "app.py", recibiendo un error: 
 
 ![Imagen de nuestro error](./errorimg.png)
+
+✔️ 10.2 Solución
+Este error nos dice que debemos implementar algunas mejoras o correcciones en la importación, ya que nuestro test no esta reconociendo o encontrando el fichero app.py o app, por lo tanto, agregamos algunas lineas en el test para decirle a nuestro test, que de manera forzada, debe buscar en la raiz de nuestro directorio, asi que implementamos estas lineas al principio de nuestro test: 
+📛 Antes:
+```
+from app import app
+```
+
+✔️ Ahora:
+```
+import pytest
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from app import app
+```
+
+📛 10.3 Error en la estructura del test
+
+Al haber arreglado nuestro error, podemos ver que al ejecutar nuestro pytest, vemos otro error 
+
+![Imagen de nuestro error de welcome](./"error de welcome".png)
+
+Aqui, vemos que al implementar el codigo compartido por el profesor, tenemos un error, en este caso, es:
