@@ -234,4 +234,6 @@ Al haber arreglado nuestro error, podemos ver que al ejecutar nuestro pytest, ve
 
 ![Imagen de nuestro error de welcome](./error%20del%20welcome.png)
 
-Aqui, vemos que al implementar el codigo compartido por el profesor, tenemos un error, en este caso, es:
+Aqui, vemos que al implementar el codigo compartido por el profesor, tenemos un error, en este caso, es por:
+
+![Imagen de nuestro error de welcome](./error%20del%20welcome.png)
