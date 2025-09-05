@@ -236,4 +236,14 @@ Al haber arreglado nuestro error, podemos ver que al ejecutar nuestro pytest, ve
 
 Aqui, vemos que al implementar el codigo compartido por el profesor, tenemos un error, en este caso, es por:
 
+![Imagen de nuestro error de welcome](./textoWelcome.png)
+
+
 ![Imagen de nuestro error de welcome](./error%20del%20welcome.png)
+
+Esto es debido a que nuestro test buscará la palabra que este en comillas, en la información compartida, tenemos "Welcome" por lo tanto, nuestro test buscará en nuestro jinja la palabra Welcome, si no la encuentra, nos botará un error o F, asi que la solución es cambiar el Welcome por alguna palabra o algo que tenga nuestro Jinja, por ejemplo: 
+
+![Imagen de nuestro error de welcome](./solucion%20segundo%20error.png)
+
+Aqui cambiamos la palabra b"Welcome", por "Temporizador Pomodoro" ya que nuestra aplicación si cuenta en uno o más lugares con tales palabras. 
+
