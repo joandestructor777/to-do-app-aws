@@ -232,6 +232,6 @@ from app import app
 
 Al haber arreglado nuestro error, podemos ver que al ejecutar nuestro pytest, vemos otro error 
 
-![Imagen de nuestro error de welcome](./"error de welcome".png)
+![Imagen de nuestro error de welcome](./error%20de%20welcome".png)
 
 Aqui, vemos que al implementar el codigo compartido por el profesor, tenemos un error, en este caso, es:
